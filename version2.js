@@ -37,14 +37,16 @@ class Field {
     }
     runGame() {
         clear();
-        let hardMode = prompt('\nWould you like to play in hard mode? ("y" for yes, "n" for no)');
+        // Hard mode not working yet
+        let hardMode = prompt("\nWould you dare to try in hard mode? ('Y' for Yes, 'N' for No)");
   	    if (hardMode.toUpperCase() == 'Y') {
   		    hardMode = true;
-  		    console.log('We will be playing in hard mode! A new hole will be added after every move you make!\n\n');
+  		    console.log('Playing in hard mode!\n');
   	    }
   	    else {
   		    hardMode = false;
   	    }
+        
         let inGame = true;
         while (inGame) {
             this.print();
@@ -77,10 +79,12 @@ class Field {
             case "D":
                 this.locationX += 1;
                 break;
+            // Reset not working yet
             case "RESET":
                 inGame = false;
                 myField.runGame();
                 break;
+
             default:
                 console.log("Enter W = UP, S = DOWN, A = LEFT, D = RIGHT & RESET to Restart");
                 this.askQuestion();
