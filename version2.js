@@ -23,7 +23,6 @@ class Field {
                 const prob = Math.random();
                 field[y][x] = prob > percentage ? fieldCharacter : hole;
             }
-
         }
         const hatLocation = {
             x: Math.floor(Math.random() * width),
@@ -38,6 +37,14 @@ class Field {
     }
     runGame() {
         clear();
+        let hardMode = prompt('\nWould you like to play in hard mode? ("y" for yes, "n" for no)');
+  	    if (hardMode.toUpperCase() == 'Y') {
+  		    hardMode = true;
+  		    console.log('We will be playing in hard mode! A new hole will be added after every move you make!\n\n');
+  	    }
+  	    else {
+  		    hardMode = false;
+  	    }
         let inGame = true;
         while (inGame) {
             this.print();
@@ -45,15 +52,12 @@ class Field {
             if (!this.inBox()) {
                 console.log("Out of box! ~~ GAME OVER!!");
                 inGame = false;
-                break;
             } else if (this.isHole()) {
                 console.log("Sad, you fell into a hole! ~~ GAME OVER!!");
                 inGame = false;
-                break;
             } else if (this.isHat()) {
                 console.log("Congratulation, you have found your hat! ~~ You WIN!");
                 inGame = false;
-                break;
             }
             this.field[this.locationY][this.locationX] = pathCharacter;
         }

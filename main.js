@@ -89,15 +89,12 @@ class Field {
             if (!this.inBox()) {
                 console.log("Out of box! ~~ GAME OVER!!");
                 inGame = false;
-                break;
             } else if (this.isHole()) {
                 console.log("Sad, you fell into a hole! ~~ GAME OVER!!");
                 inGame = false;
-                break;
             } else if (this.isHat()) {
                 console.log("Congratulation, you have found your hat! ~~ You WIN!");
                 inGame = false;
-                break;
             }
             this.field[this.locationY][this.locationX] = pathCharacter;
         }
